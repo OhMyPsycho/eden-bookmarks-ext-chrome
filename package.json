@@ -1,11 +1,11 @@
 {
   "name": "eden-bookmark-json",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A extension to manage bookmarks for productivity of the developer",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lxieyang/chrome-extension-boilerplate-react.git"
+    "url": "https://github.com/OhMyPsycho/eden-bookmarks-ext-chrome"
   },
   "scripts": {
     "build": "node utils/build.js",
