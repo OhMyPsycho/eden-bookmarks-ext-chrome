@@ -22,6 +22,9 @@ const useArchiveStore = create(
       remove: (id) => {
         set({ archives: get().archives.filter((archive) => archive.id !== id)});
       },
+      removeAll: () => {
+        set({ archives: [] });
+      }
     }),
     {
       name: 'archives-storage',

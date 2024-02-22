@@ -1,16 +1,25 @@
-import { post } from "../libs/api";
+import { useMemo, useState } from "react";
 import useArchiveStore from "../stores/archives"
-import useAuthStore from "../stores/auth";
 import { v4 as uuidv4 } from 'uuid';
+import { set } from "react-hook-form";
 
 export const useArchive = () => {
-    const isAuthenticated = useAuthStore(state => state.isAuthenticated);
-    const user = useAuthStore(state => state.user);
+    const [search, setSearch] = useState('');
 
     const archives = useArchiveStore(state => state.archives);
     const remove = useArchiveStore(state => state.remove);
     const add = useArchiveStore(state => state.add);
     const syncJson = useArchiveStore(state => state.syncJson);
+    const removeAllArchives = useArchiveStore(state => state.removeAll);
+
+    const results = useMemo(() => {
+        if(search === '') return archives;
+        return archives.filter(archive => archive.title.toLowerCase().includes(search.toLowerCase()));
+    }, [archives, search])
+
+    const onSearch = (str) => {
+        setSearch(str);
+    }
 
     const downloadJson = () => {
         const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(archives));
@@ -60,13 +69,16 @@ export const useArchive = () => {
         remove(id)
     }
 
+    const removeAll = () => removeAllArchives()
+
     return {
-        archives,
         removeArchive,
         saveArchive,
-        isAuthenticated,
+        onSearch,
         downloadJson,
         importJson,
-        user
+        results,
+        removeAll,
+        search
     }
 }

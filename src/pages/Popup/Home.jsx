@@ -1,23 +1,18 @@
-import { FileJson, Plus } from 'lucide-react';
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Plus } from 'lucide-react';
+import React from 'react'
 import { useArchive } from '../../hooks/useArchive';
 import Note from '../../containers/UI/Note';
 
 function Home() {
   const {
-    isAuthenticated,
-    user,
-    // getArchives,
+    onSearch,
     saveArchive,
-    archives,
+    results,
     downloadJson,
-    importJson
+    importJson,
+    removeAll,
+    search
   } = useArchive();
-
-  useEffect(() => {
-    console.log(archives)
-  }, [])
 
   const saveLink = () => {
     
@@ -33,9 +28,17 @@ function Home() {
     <div className="popup">
       <header className="popup-header">
         <h4>Bookmarks</h4>
+        <input 
+        value={search}
+        onChange={(e) => onSearch(e.target.value)}
+        placeholder='Search...' />
+        <button className='delete_all' onClick={removeAll}>
+          Delete all
+        </button>
       </header>
       <div className='popup_body'>
-        {archives.length > 0 && archives.map(arch => (
+        
+        {results.length > 0 && results.map(arch => (
           <Note 
           key={arch.id}
           id={arch.id}
