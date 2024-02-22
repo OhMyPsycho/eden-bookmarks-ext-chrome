@@ -1,0 +1,67 @@
+.popup {
+    width: 350px;
+    height: 350px;
+    padding: 14px;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    .popup-header {
+        padding-bottom: 16px;
+        h4 {
+            font-size: 1.2rem;
+            margin: 0;
+        }
+    }
+    .popup_body {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        gap: 4px;
+        overflow: auto;
+        &::-webkit-scrollbar {display: none;}
+    }
+    .popup_footer {
+        display: flex;
+        justify-content: space-between;
+        button, label {
+            height: 2rem;
+            padding: 0 8px;
+            border: none;
+            line-height: 2rem;
+            font-weight: 500;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            transition: background ease-in-out 300ms;
+            color: #010101;
+            &:hover {
+                background-color: #1f1c1c;
+                color: #fff;
+            }
+        }
+        .button_add {
+            box-shadow: 0 0 10px 0 rgba($color: #000000, $alpha: 0.2);
+        }
+
+        label {
+            margin-right: 8px;
+            background-color: #010101;
+            color: #fff;
+            &:hover {
+                background-color: #1f1c1c;
+            }
+        }
+
+        .export_button {
+            font-weight: 500 !important;
+        }
+
+        div {
+            display: flex;
+            flex: 1;
+        }
+    }
+}

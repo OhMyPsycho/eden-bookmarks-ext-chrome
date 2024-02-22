@@ -1,0 +1,22 @@
+.noteItem {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    .note_info {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+    .noteTitle {
+        color: #010101;
+        cursor: pointer;
+        font-size: 14px;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    .icon_ {
+        color: #D04848;
+        cursor: pointer;
+    }
+}
